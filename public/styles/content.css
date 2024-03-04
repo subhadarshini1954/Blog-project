@@ -1,0 +1,493 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap'); */
+
+/* .............variables................. */
+:root {
+  --max-width: 1170px;
+  --fixed-width: 620px;
+  --transition: all 0.3s linear;
+  --spacing: 0.25rem;
+  --radius: 0.5rem;
+}
+
+/* Common Styling ..................  */
+*,
+::before,
+::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+/* body { */
+/* font-family: 'Poppins', sans-serif; */
+/* } */
+
+h1,
+h2,
+h3,
+h4,
+p {
+  letter-spacing: var(--spacing);
+  text-transform: capitalize;
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+}
+
+h1 {
+  font-size: 2rem;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.8rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1.2rem;
+}
+
+p {
+  font-size: 1rem;
+  color: grey;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.btn {
+  text-transform: uppercase;
+  background: transparent;
+  color: black;
+  padding: 0.375rem 0.75rem;
+  letter-spacing: 0.25rem;
+  transition: all 0.3s linear;
+  font-size: 1rem;
+  border: 2px solid black;
+  cursor: pointer;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 0.5rem;
+}
+
+.btn:hover {
+  background: #756AB6;
+  color: #FFE5E5;
+}
+
+/* *******************************************individuals  */
+/* Navbar styling .........  */
+#navbar {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background-color: #756AB6;
+  padding: 2rem 8rem;
+  box-shadow: 0 5px 15px rgb(0, 0, 0);
+  z-index: 999;
+  position: sticky;
+  top: 0;
+  left: 0;
+  border-radius: 1rem;
+}
+
+#logo {
+  width: 30%;
+}
+
+#logo-text {
+  color: #FFE5E5;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+#under-line {
+  width: 20%;
+  height: 0.2rem;
+  border: 2px solid #FFE5E5;
+}
+
+.nav-list {
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-list li {
+  position: relative;
+  padding: 0 2rem;
+  margin: 1rem;
+  width: 30%;
+}
+
+.nav-list li a {
+  color: white;
+  font-size: 1.3rem;
+  font-weight: 300;
+}
+
+.nav-list li a:hover,
+.nav-list li a.active {
+  color: aqua;
+  transition: var(--transition);
+}
+
+.nav-list li a.active::after,
+.nav-list li a:hover::after {
+  content: "";
+  width: 30%;
+  height: 0.2rem;
+  background: aqua;
+  position: absolute;
+  bottom: -0.1rem;
+  left: 2rem;
+}
+
+#mobile-nav {
+  display: none;
+  align-items: center;
+}
+
+#close-btn {
+  display: none;
+}
+
+/* Styling for index.ejs page individuals .......  */
+
+#post-holder {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+  grid-auto-rows: 15rem;
+  grid-gap: 1rem;
+}
+
+.posts {
+  border: 3px solid #756AB6;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.post-title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: black;
+}
+
+.blog-text {
+  color: black;
+  text-align: justify;
+}
+
+.read-more {
+  display: inline-block;
+  color: #756AB6;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.update-btns {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.update-btn {
+  height: 3rem;
+  width: 3rem;
+  font-size: 1.3rem;
+  background: none;
+  cursor: pointer;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.update-btn:hover {
+  background-color: #756AB6;
+  border-radius: 50%;
+  color: #FFE5E5;
+}
+
+/* Styling for compose.ejs page individuals .......  */
+#blog-form {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#compose-form {
+  width: 75%;
+  margin: auto;
+  padding: 0 2rem;
+}
+
+.inputs {
+  width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+#content {
+  min-height: 20rem;
+}
+
+.submit-btn {
+  display: block;
+  margin: auto;
+  margin-bottom: 1rem;
+}
+
+/* Styling for post.ejs page individuals .......  */
+#post-container {
+  width: 100%;
+  padding: 1rem;
+  margin: 1rem auto;
+  display: flex;
+}
+
+#post-sub-container {
+  width: 75%;
+  padding: 1rem;
+  margin: auto;
+}
+
+#blog-title {
+  margin-bottom: 1.2rem;
+}
+
+#blog-content {
+  text-align: justify;
+}
+
+.full-post-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: black;
+  text-align: center;
+}
+
+.full-post-text {
+  font-size: 1.2rem;
+  color: black;
+  text-align: justify;
+}
+
+/* Styling for confirm.ejs page individuals .......  */
+
+#message-container {
+  height: 50vh;
+  width: 80%;
+  background-color: #756AB6;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+#msg-sub-container,
+#message-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#msg-sub-container {
+  height: 80%;
+  padding: 1rem;
+
+}
+
+#msg-sub-container h1,
+p,
+.home-link {
+  color: #FFE5E5;
+  font-weight: bold;  
+}
+
+#msg-sub-container h1 {
+  font-size: 3rem;
+}
+
+#msg-sub-container p {
+  font-size: 1.8rem;
+}
+
+.home-link {
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* mediaqueries.............  */
+
+@media (max-width:1124px) {
+  .nav-list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: fixed;
+    top: 0;
+    right: -30rem;
+    width: 30rem;
+    height: 100vh;
+    padding: 8rem 0 0 1rem;
+    transition: var(--transition);
+    background-color: black;
+    color: white;
+  }
+
+  .nav-list.active {
+    right: 0rem;
+    border: 2px solid black;
+    background-color: #756AB6;
+  }
+
+  .nav-list li {
+    margin-bottom: 2.5rem;
+  }
+
+  #mobile-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #mobile-nav i {
+    font-size: 2.4rem;
+    padding-left: 2rem;
+  }
+  #close-btn {
+    display: initial;
+    position: absolute;
+    top: 3rem;
+    left: 3rem;
+    font-size: 2rem;
+  }
+  #compose-form {
+    width: 80%;
+    padding: 0 1rem;
+  }
+  #post-sub-container {
+    width: 85%;
+
+  }
+}
+
+@media (max-width:970px) {
+
+  body,
+  #navbar,
+  #container {
+    padding: 1rem 2rem;
+
+  }
+
+
+  #logo {
+    width: 70%;
+  }
+
+  #logo-text {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+}
+
+@media (max-width:870px) {
+
+  #date,
+  #time-holder {
+    width: 45%;
+  }
+
+  #compose-form {
+    width: 98%;
+
+  }
+}
+
+@media (max-width:570px) {
+  #container {
+    grid-template-rows: 10rem auto;
+  }
+
+  #date,
+  #time-holder {
+    width: 100%;
+  }
+
+  body {
+    padding: 0;
+  }
+
+  #compose-form {
+    width: 100%;
+
+  }
+
+  #post-sub-container {
+    width: 95%;
+
+  }
+  #msg-sub-container h1 {
+    font-size: 2.5rem;
+  }
+  
+  #msg-sub-container p {
+    font-size: 1.2rem;
+  }
+  
+  .home-link {
+    font-size: 1rem;
+    cursor: pointer;
+  }
+}
+
+@media (max-width:280px) {
+
+  #logo {
+    width: 50%;
+  }
+
+  #logo-text {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+
+  #date,
+  #time-holder {
+    font-size: 1rem;
+  }
+
+  .nav-list {
+    right: -25rem;
+    width: 25rem;
+
+  }
+
+  #post-holder {
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    grid-auto-rows: 16rem;
+
+  }
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+  <link rel="stylesheet" href="/styles/layout.css">
+  <link rel="stylesheet" href="/styles/content.css">
+  <title>Compose</title>
+</head>
+
+<body>
+  <%- include("partials/header.ejs") %>
+    <main id="container">
+      <div id="date-holder">
+        <p id="date"></p>
+        <div id="time-holder">
+          <span id="hrs"></span>
+          <span id="min"></span>
+          <span id="sec"></span>
+        </div>
+      </div>
+      <div id="blog-form">
+        <form id="compose-form" method="post" role="form">
+          <div>
+            <input type="text" class="form-control inputs" name="title" placeholder="Title" />
+          </div>
+          <div>
+            <textarea id="content" class="form-control inputs" name="content" placeholder="Type your blog"></textarea>
+          </div>
+          <div>
+            <input type="submit" name="Submit" value="Publish" class="btn submit-btn form-control" />
+          </div>
+        </form>
+      </div>
+    </main>
+    <%- include("partials/footer.ejs") %>
+      <% if (locals.error) { %>
+        <script>alert("<%= error %>");</script>
+        <% } %>
+          <script>
+            // Add event listener to the textarea for the Enter key
+            document.querySelector('input[type="submit"]').addEventListener('keydown', function (event) {
+              if (event.key === 'Enter') {
+                event.preventDefault(); // Prevent default Enter key behavior (submitting form)
+                document.getElementById('compose-form').submit(); // Submit the form
+              }
+            });
+          </script>
+          <script src="/app.js"></script>
+</body>
+
+</html>

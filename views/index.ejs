@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+  <link rel="stylesheet" href="/styles/layout.css">
+  <link rel="stylesheet" href="/styles/content.css">
+  <title>Main page</title>
+</head>
+
+<body>
+  <%- include("partials/header.ejs") %>
+<main id="container">
+    <div id="date-holder">
+      <p id="date"></p>
+      <div id="time-holder">
+        <span id="hrs"></span>
+        <span id="min"></span>
+        <span id="sec"></span>
+      </div>
+    </div>
+    <div id="post-holder">
+      <% if(locals.Allpost){ %>
+        <% Allpost.forEach(function(item, index){ %>
+          <div class="posts">
+            <div id="blog-title">
+              <p class="post-title">
+                <%= item.title %>
+              </p>
+            </div>
+            <div id="blog-des">
+              <p class="blog-text">               
+                <%= truncateContent(item.content, 90) %>
+              </p>
+              <a class="read-more" href="/posts/<%= item.id %>">Read more...</a>
+               <!-- Font Awesome icons for edit and delete -->
+        <div class="update-btns">
+          <a class="update-btn" href="/edit-post/<%= item.id %>"><i class="fa fas fa-edit"></i></a>
+          <form action="/delete-post/<%= item.id %>" method="POST">
+            <button class="update-btn" type="submit"><i class="fas fa-trash-alt"></i></button>
+          </form>          
+        </div>
+            </div>
+          </div>
+          <% }); %>
+            <% } %>
+    </div>
+  </main>
+    <%- include("partials/footer.ejs") %>
+
+<script src="/app.js"></script>
+</body>
+
+</html>

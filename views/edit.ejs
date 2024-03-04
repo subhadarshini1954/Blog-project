@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+    <link rel="stylesheet" href="/styles/layout.css">
+    <link rel="stylesheet" href="/styles/content.css">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <%- include("partials/header.ejs") %>
+        <main id="container">
+            <h1>Edit Post</h1>
+            <div id="blog-form">
+                <form id="compose-form" action="/edit-post/<%= post.id %>" method="POST">
+                    <div>                        
+                        <input class="form-control inputs" type="text" id="title" name="title" value="<%= post.title %>">
+                    </div>
+                    <div>                       
+                        <textarea class="form-control inputs" id="content" name="content"><%= post.content %></textarea>
+                    </div>
+                    <button type="submit" class="btn submit-btn">Save Changes</button>
+                </form>
+            </div>
+            
+        </main>
+
+        <%- include("partials/footer.ejs") %>
+</body>
+
+</html>

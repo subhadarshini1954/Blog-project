@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+  <link rel="stylesheet" href="/styles/layout.css">
+  <link rel="stylesheet" href="/styles/content.css">
+  <title>Main page</title>
+</head>
+
+<body>
+  <%- include("partials/header.ejs") %>
+    <div id="date-holder">
+      <p id="date"></p>
+      <div id="time-holder">
+        <span id="hrs"></span>
+        <span id="min"></span>
+        <span id="sec"></span>
+      </div>
+    </div>
+    <% if (locals.post) { %>
+      <div id="post-container">
+        <div id="post-sub-container">
+          <div class="post">
+            <div id="blog-title">
+              <h2 class="full-post-title">
+                <%= post.title %>
+              </h2>
+            </div>
+            <div id="blog-content">
+              <p class="full-post-text">
+                <%= post.content %>
+              </p>
+              <!-- Font Awesome icons for edit and delete -->
+              <div class="update-btns">
+                <!-- Edit button -->
+                <a class="update-btn" href="/edit-post/<%= post.id %>"><i class="fas fa-edit"></i></a>
+                <!-- Delete button (submit a form) -->
+                <form action="/delete-post/<%= post.id %>" method="post" style="display: inline;">
+                  <button class="update-btn" type="submit">
+                    <i class="fas fa-trash-alt"></i>
+                  </button>
+                </form>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <% } else { %>
+        <p>Post not found</p>
+        <% } %>
+
+
+          <%- include("partials/footer.ejs") %>
+            <script src="/app.js"></script>
+</body>
+
+</html>
