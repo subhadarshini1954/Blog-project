@@ -4,7 +4,7 @@ import { dirname } from "path";
 import { fileURLToPath } from "url";
 
 const app = express();
-const port = 3000;
+const port = 8000;
 let blogPost = [];
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -69,7 +69,9 @@ app.get("/posts/:id", (req, res) => {
   if (post) {
     res.render("posts.ejs", { post }); // Pass the post variable to the template
   } else {
-    res.status(404).send("Post not found");
+    // Handle the case where the post ID is not found
+    res.status(404).send("<script>alert('Post not found. Redirecting to home page...'); setTimeout(() => { window.location.href = '/'; }, 2000);</script>");
+
   }
 });
 // Edit post route
@@ -82,10 +84,10 @@ app.get("/edit-post/:id", (req, res) => {
     res.status(404).send("Post not found");
   }
 });
-app.get("/confirm",(req,res)=>{
+app.get("/confirm", (req, res) => {
   res.render("confirm.ejs");
 });
-app.get("/about",(req,res)=>{
+app.get("/about", (req, res) => {
   res.render("about.ejs");
 });
 
@@ -108,30 +110,30 @@ app.post("/edit-post/:id", (req, res) => {
   const postIndex = blogPost.findIndex(post => post.id === postId);
 
   if (postIndex !== -1) {
-      const updatedPost = {
-          id: postId,
-          title: req.body.title,
-          content: req.body.content
-      };
+    const updatedPost = {
+      id: postId,
+      title: req.body.title,
+      content: req.body.content
+    };
 
-      // Update the post in your array
-      blogPost[postIndex] = updatedPost;
-      
-      // Redirect to the confirmation page
-      res.redirect("/confirm");
+    // Update the post in your array
+    blogPost[postIndex] = updatedPost;
+
+    // Redirect to the confirmation page
+    res.redirect("/confirm");
   } else {
-      // Handle the case where the post ID is not found
-      res.status(404).send("Post not found");
+    // Handle the case where the post ID is not found
+    res.status(404).send("Post not found");
   }
 });
 
 // Delete post route
 app.post('/delete-post/:id', (req, res) => {
   const postId = req.params.id;
-  
+
   // Find the index of the post in the blogPost array
   const postIndex = blogPost.findIndex(post => post.id === postId);
-  
+
   // Check if the post exists
   if (postIndex !== -1) {
     // Remove the post from the array
